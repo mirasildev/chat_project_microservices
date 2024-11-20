@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package="genproto/chat_service";
+
+import "chat.proto";
+import "google/protobuf/empty.proto";
+
+service ChatService {
+    rpc Create(Chat) returns (Chat) {}
+    rpc Get(IdRequest) returns (Chat) {}
+    rpc Update(Chat) returns (Chat) {}
+    rpc Delete(ChatIdRequest) returns (google.protobuf.Empty) {}
+    rpc GetAll(GetAllChatParams) returns (GetAllChatsRes) {}
+}

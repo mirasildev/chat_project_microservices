@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package="genproto/group_chat_service";
+
+message AddMemberGroupRequest {
+    int64 chat_id = 1;
+    int64 user_id = 2;
+    string user_type = 3;
+    int64 admin_id = 4;
+}
+
+message ChatInfo {
+    int64 id = 1;
+    string name = 2;
+    string chat_type = 3;
+    string image_url = 4;
+}
+
+message UserInfo {
+    int64 id = 1;
+    string username = 2;
+    string email = 3;
+    string image_url = 4;
+}
+
+message AddMemberGroupResponse {
+    int64 id = 1;
+    ChatInfo ch_info = 2;
+    UserInfo u_info = 3;
+    string user_type = 4;
+    string created_at = 5;
+}
+
+message RemoveMemberGroupRequest {
+    int64 chat_id = 1;
+    int64 user_id = 2;
+    int64 admin_id = 3;
+}
+
+message DeleteGroupChatRequest {
+    int64 chat_id = 1;
+    int64 admin_id = 2;
+}
+
+message LeaveGroupRequest {
+    int64 chat_id = 1;
+    int64 user_id = 2;
+}
+
+message GetAllJoinedGroupRequest {
+    int64 user_id = 1;
+}
+
+message GetJoinedGroupResponse {
+    int64 id = 1;
+    string name = 2;
+    string chat_type = 3;
+    string image_url = 4;
+}
+
+message GetAllJoinedGroupsResponse {
+    repeated GetJoinedGroupResponse groups = 1;
+    int64 count = 2;
+}
+
